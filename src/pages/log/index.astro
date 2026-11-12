@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import LogList from '../../components/LogList.astro';
+import { getLogPosts } from '../../lib/content';
+
+const posts = await getLogPosts();
+---
+
+<BaseLayout title="Log" description="tsukikaze lab の開発記録です。">
+	<h1 class="section-title">Log <small>開発記録</small></h1>
+	<LogList posts={posts} />
+</BaseLayout>

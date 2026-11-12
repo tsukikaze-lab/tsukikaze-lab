@@ -1,0 +1,50 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import { getLogPosts } from '../../lib/content';
+
+export async function getStaticPaths() {
+	const posts = await getLogPosts();
+	return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { title, description, date, tags } = post.data;
+const { Content } = await render(post);
+---
+
+<BaseLayout title={title} description={description}>
+	<article>
+		<p class="back"><a href="/log/">← Log</a></p>
+		<h1>{title}</h1>
+		<p class="meta muted">
+			<FormattedDate date={date} />
+			{tags.map((tag) => <span class="tag">{tag}</span>)}
+		</p>
+		<div class="prose">
+			<Content />
+		</div>
+	</article>
+</BaseLayout>
+
+<style>
+	.back {
+		margin: 0;
+		font-size: 0.9rem;
+	}
+
+	h1 {
+		margin: 1rem 0 0.25rem;
+		font-size: clamp(1.5rem, 4.5vw, 2rem);
+	}
+
+	.meta {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.5rem;
+		margin: 0 0 2rem;
+		font-size: 0.9rem;
+	}
+</style>

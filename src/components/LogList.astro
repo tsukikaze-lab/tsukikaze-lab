@@ -1,0 +1,60 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import FormattedDate from './FormattedDate.astro';
+
+interface Props {
+	posts: CollectionEntry<'log'>[];
+}
+
+const { posts } = Astro.props;
+---
+
+{posts.length === 0 && <p class="empty">まだ記録はありません。近日公開予定です。</p>}
+<ul class="log-list">
+	{
+		posts.map((post) => (
+			<li>
+				<FormattedDate date={post.data.date} />
+				<a href={`/log/${post.id}/`}>{post.data.title}</a>
+			</li>
+		))
+	}
+</ul>
+
+<style>
+	.empty {
+		margin: 0;
+		color: var(--muted);
+	}
+
+	.log-list {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	li {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.25rem 1.25rem;
+		padding: 0.85rem 0;
+		border-bottom: 1px solid var(--border);
+	}
+
+	li :global(time) {
+		flex-shrink: 0;
+		min-width: 6.5rem;
+		color: var(--muted);
+		font-size: 0.9rem;
+		font-variant-numeric: tabular-nums;
+	}
+
+	a {
+		color: var(--text);
+		text-decoration: none;
+	}
+
+	a:hover {
+		color: var(--accent);
+	}
+</style>

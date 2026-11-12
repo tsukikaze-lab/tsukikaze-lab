@@ -1,0 +1,78 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import { getWorks } from '../../lib/content';
+
+export async function getStaticPaths() {
+	const works = await getWorks();
+	return works.map((work) => ({ params: { slug: work.id }, props: { work } }));
+}
+
+const { work } = Astro.props;
+const { title, summary, date, tags, url, repo, status } = work.data;
+const { Content } = await render(work);
+---
+
+<BaseLayout title={title} description={summary}>
+	<article>
+		<p class="back"><a href="/works/">← Works</a></p>
+		<h1>{title}</h1>
+		<p class="meta muted">
+			<FormattedDate date={date} /> ・ {status}
+		</p>
+		<p class="summary">{summary}</p>
+		{
+			(url || repo) && (
+				<p class="links">
+					{url && <a href={url}>開く</a>}
+					{repo && <a href={repo}>ソースコード</a>}
+				</p>
+			)
+		}
+		{
+			tags.length > 0 && (
+				<div class="tags">
+					{tags.map((tag) => (
+						<span class="tag">{tag}</span>
+					))}
+				</div>
+			)
+		}
+		<div class="prose">
+			<Content />
+		</div>
+	</article>
+</BaseLayout>
+
+<style>
+	.back {
+		margin: 0;
+		font-size: 0.9rem;
+	}
+
+	h1 {
+		margin: 1rem 0 0.25rem;
+		font-size: clamp(1.5rem, 4.5vw, 2rem);
+	}
+
+	.meta {
+		margin: 0;
+		font-size: 0.9rem;
+	}
+
+	.summary {
+		font-size: 1.05rem;
+	}
+
+	.links {
+		display: flex;
+		gap: 1rem;
+	}
+
+	.tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.4rem;
+	}
+</style>

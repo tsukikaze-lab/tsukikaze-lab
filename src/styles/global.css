@@ -1,0 +1,155 @@
+/* ===== 配色（伝統色ベース） ===== */
+:root {
+	color-scheme: light dark;
+	/* ライト：月白 × 藍 */
+	--bg: #eaf4fc; /* 月白 */
+	--surface: #ffffff;
+	--text: #0f2350; /* 濃藍 */
+	--muted: #4a5b78;
+	--accent: #165e83; /* 藍色 */
+	--border: #c9dcec;
+	--glow: rgba(22, 94, 131, 0.08);
+
+	--font-heading: 'Zen Old Mincho', 'Yu Mincho', serif;
+	--font-body: 'Noto Sans JP', 'Hiragino Sans', 'Yu Gothic', sans-serif;
+	--max-width: 46rem;
+	--radius: 10px;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		/* ダーク：夜空 × 空色 */
+		--bg: #0b1426; /* 夜空 */
+		--surface: #14213a;
+		--text: #eaf4fc; /* 月白 */
+		--muted: #9fb3cc;
+		--accent: #a0d8ef; /* 空色 */
+		--border: #24344f;
+		--glow: rgba(160, 216, 239, 0.07);
+	}
+}
+
+/* ===== ベース ===== */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	-webkit-text-size-adjust: 100%;
+}
+
+body {
+	margin: 0;
+	background:
+		radial-gradient(60rem 30rem at 85% -10%, var(--glow), transparent 70%),
+		var(--bg);
+	background-attachment: fixed;
+	color: var(--text);
+	font-family: var(--font-body);
+	font-size: 1rem;
+	line-height: 1.85;
+	letter-spacing: 0.02em;
+}
+
+h1,
+h2,
+h3 {
+	font-family: var(--font-heading);
+	font-weight: 500;
+	line-height: 1.4;
+	letter-spacing: 0.06em;
+}
+
+a {
+	color: var(--accent);
+	text-underline-offset: 0.2em;
+}
+
+a:hover {
+	text-decoration-thickness: 2px;
+}
+
+:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: 3px;
+	border-radius: 4px;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+/* 本文中のコード */
+code {
+	font-family: ui-monospace, 'Cascadia Code', Consolas, monospace;
+	font-size: 0.9em;
+	background: var(--surface);
+	border: 1px solid var(--border);
+	border-radius: 4px;
+	padding: 0.1em 0.35em;
+}
+
+pre {
+	overflow-x: auto;
+	padding: 1rem;
+	border-radius: var(--radius);
+	border: 1px solid var(--border);
+}
+
+pre code {
+	background: none;
+	border: 0;
+	padding: 0;
+}
+
+/* ===== 共通パーツ ===== */
+.container {
+	width: 100%;
+	max-width: var(--max-width);
+	margin: 0 auto;
+	padding: 0 1rem;
+}
+
+.section-title {
+	font-size: 1.25rem;
+	margin: 3rem 0 1rem;
+	display: flex;
+	align-items: baseline;
+	gap: 0.75rem;
+}
+
+.section-title small {
+	font-family: var(--font-body);
+	font-size: 0.8rem;
+	color: var(--muted);
+	letter-spacing: 0.1em;
+}
+
+.muted {
+	color: var(--muted);
+}
+
+.tag {
+	display: inline-block;
+	font-size: 0.75rem;
+	line-height: 1.6;
+	padding: 0 0.6em;
+	border: 1px solid var(--border);
+	border-radius: 999px;
+	color: var(--muted);
+}
+
+.prose h2 {
+	font-size: 1.3rem;
+	margin-top: 2.5rem;
+	padding-bottom: 0.3rem;
+	border-bottom: 1px solid var(--border);
+}
+
+.prose h3 {
+	font-size: 1.1rem;
+	margin-top: 2rem;
+}

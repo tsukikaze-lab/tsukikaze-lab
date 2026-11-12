@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="ページが見つかりません">
+	<section class="notfound">
+		<p class="code">404</p>
+		<h1>雲に隠れてしまったようです</h1>
+		<p class="muted">お探しのページは見つかりませんでした。</p>
+		<p><a href="/">トップへ戻る</a></p>
+	</section>
+</BaseLayout>
+
+<style>
+	.notfound {
+		padding: 4rem 0;
+		text-align: center;
+	}
+
+	.code {
+		margin: 0;
+		font-family: var(--font-heading);
+		font-size: 3rem;
+		color: var(--accent);
+	}
+</style>

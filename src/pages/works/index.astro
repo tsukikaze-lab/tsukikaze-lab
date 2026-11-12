@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import WorkCard from '../../components/WorkCard.astro';
+import { getWorks } from '../../lib/content';
+
+const works = await getWorks();
+---
+
+<BaseLayout title="Works" description="tsukikaze lab で作ったツールやゲームの一覧です。">
+	<h1 class="section-title">Works <small>作ったもの</small></h1>
+	<div class="grid">
+		{works.map((work) => <WorkCard work={work} />)}
+	</div>
+</BaseLayout>
+
+<style>
+	.grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+		gap: 1rem;
+	}
+</style>

@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WorkCard from '../components/WorkCard.astro';
+import LogList from '../components/LogList.astro';
+import { getWorks, getLogPosts } from '../lib/content';
+import { AUTHOR } from '../consts';
+
+const works = (await getWorks()).slice(0, 4);
+const posts = (await getLogPosts()).slice(0, 5);
+---
+
+<BaseLayout>
+	<section class="hero">
+		<p class="hero-kicker">tsukikaze lab</p>
+		<h1>月と風のあいだで、<br />AIと小さなものを作る。</h1>
+		<p class="muted">
+			{AUTHOR}の個人開発ラボです。平日の夜と週末に、AIと一緒に作ったツールやゲーム、その開発記録を置いています。
+		</p>
+	</section>
+
+	<section>
+		<h2 class="section-title">Works <small>作ったもの</small></h2>
+		<div class="grid">
+			{works.map((work) => <WorkCard work={work} />)}
+		</div>
+		<p class="more"><a href="/works/">すべての作品を見る →</a></p>
+	</section>
+
+	<section>
+		<h2 class="section-title">Log <small>開発記録</small></h2>
+		<LogList posts={posts} />
+		<p class="more"><a href="/log/">すべての記録を見る →</a></p>
+	</section>
+</BaseLayout>
+
+<style>
+	.hero {
+		padding: 3rem 0 1rem;
+	}
+
+	.hero-kicker {
+		margin: 0;
+		font-size: 0.8rem;
+		letter-spacing: 0.3em;
+		color: var(--accent);
+		text-transform: uppercase;
+	}
+
+	.hero h1 {
+		margin: 0.75rem 0 1rem;
+		font-size: clamp(1.6rem, 5vw, 2.3rem);
+	}
+
+	.hero p.muted {
+		max-width: 34rem;
+		margin: 0;
+	}
+
+	.grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+		gap: 1rem;
+	}
+
+	.more {
+		margin: 1rem 0 0;
+		font-size: 0.9rem;
+		text-align: right;
+	}
+</style>
