@@ -54,8 +54,8 @@
 | フレームワーク | Astro（静的サイト生成） |
 | コンテンツ | Markdown（Astro Content Collections で Works / Log を管理） |
 | ソース管理 | GitHub（`tsukikaze-lab` アカウント） |
-| 公開先 | Cloudflare Pages（GitHub に push すると自動公開） |
-| URL | 初期は `*.pages.dev` の無料 URL。独自ドメインは後から |
+| 公開先 | Cloudflare Workers（静的アセット。GitHub に push すると自動公開） |
+| URL | 初期は `*.workers.dev` の無料 URL。独自ドメインは後から |
 | 計測 | Cloudflare Web Analytics（無料・Cookie 不要） |
 | 言語 | 日本語のみ |
 
@@ -70,7 +70,7 @@
 2. Astro の雛形を作成し、ローカルで表示する
 3. 配色・フォント・共通レイアウトを実装する
 4. 初期コンテンツ：Works #1「このサイト」、Log #1「始めます」
-5. GitHub に上げて Cloudflare Pages で公開する
+5. GitHub に上げて Cloudflare Workers で公開する
 6. Web Analytics を設定し、X で告知して反応を見る
 
 ## 8. 未決事項

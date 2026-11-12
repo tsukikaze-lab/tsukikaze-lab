@@ -2,7 +2,7 @@
 title: tsukikaze lab
 summary: このサイト。作ったものと開発記録を置いておく、月風まいの活動拠点です。
 date: 2026-11-13
-tags: [Astro, Cloudflare Pages]
+tags: [Astro, Cloudflare Workers]
 status: 開発中
 ---
 
@@ -11,7 +11,7 @@ status: 開発中
 
 ## 使った技術
 - Astro（静的サイト生成）
-- Cloudflare Pages（公開）
+- Cloudflare Workers（公開）
 - Claude Code（設計と実装の相棒）
 
 ## こだわり
