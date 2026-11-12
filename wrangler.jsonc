@@ -1,0 +1,11 @@
+{
+	// Cloudflare Workers の設定（静的サイトとして dist/ を公開する）
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "tsukikaze-lab",
+	"compatibility_date": "2026-11-01",
+	"assets": {
+		"directory": "./dist",
+		// 存在しないURLには dist/404.html を返す
+		"not_found_handling": "404-page"
+	}
+}
