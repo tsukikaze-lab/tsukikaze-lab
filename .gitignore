@@ -28,3 +28,6 @@ pnpm-debug.log*
 
 # wrangler
 .wrangler/
+
+# personal notes for Claude (not published)
+CLAUDE.local.md
