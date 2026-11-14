@@ -46,6 +46,17 @@ const nav = [
 			href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Zen+Old+Mincho:wght@500;700&display=swap"
 			rel="stylesheet"
 		/>
+		{/* Cloudflare Web Analytics（Cookie なし）。ローカル確認中は計測しない */}
+		{
+			import.meta.env.PROD && (
+				<script
+					is:inline
+					type="module"
+					src="https://static.cloudflareinsights.com/beacon.min.js"
+					data-cf-beacon='{"token": "bdf3e8be39de4dab87c3e1e5afce4a9e"}'
+				/>
+			)
+		}
 	</head>
 	<body>
 		<header class="site-header">
