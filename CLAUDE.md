@@ -12,6 +12,17 @@
 - リポジトリ: https://github.com/tsukikaze-lab/tsukikaze-lab（Public）
 - 活動名: 月風まい / tsukikaze lab（表記はすべて小文字の「tsukikaze lab」）
 
+### アカウント
+| サービス | ID / URL | 表示名 |
+|---|---|---|
+| GitHub | [tsukikaze-lab](https://github.com/tsukikaze-lab) | tsukikaze-lab |
+| X | [@tsukikaze_lab](https://x.com/tsukikaze_lab) | 月風まい |
+| YouTube | @tsukikazelab（動画はまだなし） | 月風まい / tsukikaze lab |
+| Zenn | [tsukikaze_lab](https://zenn.dev/tsukikaze_lab) | 月風まい |
+| note | [tsukikaze_lab](https://note.com/tsukikaze_lab) | 月風まい |
+| itch.io | [tsukikaze-lab](https://tsukikaze-lab.itch.io) | tsukikaze lab |
+| unityroom | 登録のみ（Unity 製ゲーム専用） | 月風まい |
+
 ## 技術構成
 - Astro 7（静的サイト）、Node.js 24（`.node-version`）
 - コンテンツ: `src/content/works/`（作品）、`src/content/log/`（開発記録）。Markdown
@@ -34,5 +45,4 @@
 ## 次にやること（候補）
 - 最初の記事 `src/content/log/hello.md` を本人の言葉で書き直し、`draft: false` にする
 - Cloudflare Web Analytics を設定する
-- X アカウント（`tsukikaze_lab`）を作り、`src/consts.ts` のリンクを確認する
 - 2本目の作品：小さな実用ツール
